@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "hozyistvobottelegram",
+  "private_key_id": "7844479c780ace422b67a95f47cb436b32ba233c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC6IAdeReOqxk3o\nruB1D8QqxIKM2WCHuoM7ww9a0oeOmr+cLlxSUTWUrRUU83y+lJlnFn84U4OKk7hm\nFh/+A/0FZBUvuLDgdgaTSFDonvrVagKHWLSXYz4NDHlApgtVLjIsgK52P+6Sd2En\nNatwnDk62ilYJ6RNJO6auYOCvErgwUVXMdroT3Fd8gqul5cWPtk5Wt4N5nGHqE58\njbMR2jg2S6aRNUfn9bPy5sxrsnZEdsHQIF8dFfnobUyHllnQxTPr3FzauKZ3LvYh\nq66u159CYc4ew1bDf+UKpmlwTEVUSG2ShtPv6qiISpygPDLb2GfggtUHIXrRfHkK\nxbrcdNo7AgMBAAECggEAS97gggplSuj5Oz+GGdHqejCOsxGtasaZ1lOmP7SQM45b\nSzQOyDN4bvm7HUY/9IQooEAobfKFLYkX4u1j7yz7CCaLCF/2IhmahpE1Ag5EW5iS\nHVAIlamL0s/h4XuOJRPmugNemq9m9eeZ/9y93PKh1Z62ucu3CwdiCEpVFIbi0wjj\n3WbCajtJp8Jmiy3oWB6N+tFvAhpV9IUfW3oFQLTeo1st8RHXSa1KGEJJyK6ipZPb\ngzYe8s7NH8/nIJB3+4Hg6nGpFmEoKFHhC4Tm2kCVHAYdP86gmj8Cm5CLzsmkxfrG\nLqHAnz114H3sBM4zNLUZ93JqeHNcInyJjq4yCvcgmQKBgQDckMWkWrJamc+IEEQ2\nW4xO5eBw7kbyhUpCZm5+ZmdoOWyyr9C1cAfmZnF1xUKX9540TvWyz2UbQSoTG5nh\nW2KxRbNh5D+BAHIaNY1wCSIyTBP929c21nUtUmuZxoKYUALhShPNqfklqbxgMhWe\nCtMrAM0ajYAFggHEGiMq6e7apwKBgQDYBtJTzx0foS+4xiCrzxcZejn3L1hHB2XD\nLQ8g8RMgZy6v12QDTv73tP09K5L08SAum2rCmlq2g/NJXONKrrqF09DYAUVAUcIM\novl0FB2YTuI3lQSYRoJPb5n7eMmYA+IUJrgVh2HlKx9tXJ85/kHSgs/rJYaLa0gc\nLmDWcfr6TQKBgQDNzDLtOEbj7FHMVckfounWj/yLwnfmP2HbdLGyNKBVigcW7p7h\nO+fTHVDOH0EUhFFT4zyzG3nuJS455+37bIY4e511QD/UgPL163PNzmfe4Edi/SXg\nn9dzc0y8jZE6xqT5SmIR6n9ymd4PL4wmC1me7T9ygAasnPJC5FRd7SoVTwKBgBMr\nx86YOsVr0IhdTNjyb+Ja7nn5QaRMC8PeY9FQk5n0jjgcrUt93zKsZSzgiRIjs+9u\n63KJsDMyUozYKXOfPf5SZd5FfpfOqaHldK3Qey/hEEJOfzHkT/wss0WV2o4bCh0v\nsnZ2pUFpKkjSR28mGUFNSpZbpi0JQET/+KgPRW6hAoGAdI32SHYxLGX5xJSCCSSJ\nROv9DOVqWlJ5CJNHHR8k9/88Crc1sOsc0yD+HVoq3tKHR9ZnXD/6QT0eZ0NshV++\nucEUHezPN8HfN6RpXBxmpJoKkGaqp6hQt6BbyJH3kPWf3xIeTpkcwj0RB0fYTnTo\n9lmqCDm7yaTPKlh/AsvZFDs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hozbase@hozyistvobottelegram.iam.gserviceaccount.com",
+  "client_id": "114431647813028175694",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hozbase%40hozyistvobottelegram.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

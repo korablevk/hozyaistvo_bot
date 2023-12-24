@@ -15,45 +15,83 @@ class SubCategory(StatesGroup):
     gooses = State()
 
 
-class Chicken(StatesGroup):
+class ChickenCross(StatesGroup):
+    cross = State()
+    meat_egg = State()
+    meat = State()
+    egg = State()
+
+
+class ChickenBreed(StatesGroup):
+    breed = State()
     meat_egg = State()
     meat = State()
     egg = State()
 
 
 class ChickenMeat(StatesGroup):
-    meat_egg = State()
-    meat = State()
-    egg = State()
-
-
-class ChickenMeatEgg(StatesGroup):
-    meat_egg = State()
-    meat = State()
-    egg = State()
-
-
-class ChickenEgg(StatesGroup):
-    meat_egg = State()
-    meat = State()
-    egg = State()
-
-
-class Ducks(StatesGroup):
-    meat_egg = State()
-    meat = State()
-    egg = State()
-
-
-class Gooses(StatesGroup):
-    meat_egg = State()
-    meat = State()
-    egg = State()
-
-
-class Scrolls(StatesGroup):
-    MAIN = State()
-    PAGERS = State()
     STUB = State()
 
 
+class ChickenMeatEgg(StatesGroup):
+    STUB = State()
+
+
+class ChickenEgg(StatesGroup):
+    STUB = State()
+
+
+class DucksCross(StatesGroup):
+    cross = State()
+    meat_egg = State()
+    meat = State()
+    egg = State()
+
+
+class DucksBreed(StatesGroup):
+    breed = State()
+    meat_egg = State()
+    meat = State()
+    egg = State()
+
+
+class DuckMeat(StatesGroup):
+    STUB = State()
+
+
+class DuckMeatEgg(StatesGroup):
+    STUB = State()
+
+
+class DuckEgg(StatesGroup):
+    STUB = State()
+
+
+class GoosesCross(StatesGroup):
+    cross = State()
+    meat_egg = State()
+    meat = State()
+    egg = State()
+
+
+class GoosesBreed(StatesGroup):
+    breed = State()
+
+
+class GoosesMeat(StatesGroup):
+    STUB = State()
+
+
+class GoosesMeatEgg(StatesGroup):
+    STUB = State()
+
+
+class GoosesEgg(StatesGroup):
+    STUB = State()
+
+
+class Order(StatesGroup):
+    title = State()
+    description = State()
+    options = State()
+    preview = State()

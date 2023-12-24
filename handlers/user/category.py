@@ -1,11 +1,7 @@
-import asyncio
-import os
-from typing import Dict, Any
-
-from aiogram.filters import CommandStart, Command
+from aiogram.filters import Command
 from aiogram.fsm.state import State, StatesGroup
 
-from aiogram import Router, F, Bot, Dispatcher
+from aiogram import Router
 from aiogram.types import Message, CallbackQuery
 
 from aiogram_dialog import Dialog, Window, setup_dialogs, DialogManager, ChatEvent, StartMode, ShowMode
@@ -17,29 +13,11 @@ from aiogram_dialog.widgets.kbd import (Checkbox, Button, Row, Cancel, Start, Ba
 from aiogram_dialog.widgets.media import StaticMedia
 from states import states
 
-from lexicon.lexicon_ru import CHICKEN_EGG_TEXT
+from .subcategory.chicken import stub_scroll_window_for_egg_chicken, stub_scroll_window_for_egg_meat_chicken, stub_scroll_window_for_meat_chicken
+from .subcategory.duck import stub_scroll_window_for_egg_duck, stub_scroll_window_for_meat_duck, stub_scroll_window_for_egg_meat_duck
+from .subcategory.goose import stub_scroll_window_for_egg_goose, stub_scroll_window_for_meat_goose, stub_scroll_window_for_egg_meat_goose
 
 EXTEND_BTN_ID = "extend"
-ID_STUB_SCROLL = "stub_scroll"
-
-
-async def paging_getter(dialog_manager: DialogManager, **_kwargs):
-    current_page = await dialog_manager.find(ID_STUB_SCROLL).get_page()
-    return {
-        "pages": 2,
-        "current_page": CHICKEN_EGG_TEXT[current_page + 1],
-        "media_page": current_page + 1
-    }
-
-SCROLLS_MAIN_MENU_BUTTON = Cancel(
-    text=Const("Назад"), id="back"
-)
-
-
-async def enable_send_mode(
-    event: CallbackQuery, button, dialog_manager: DialogManager, **kwargs
-):
-    dialog_manager.show_mode = ShowMode.SEND
 
 category = Dialog(
     Window(
@@ -53,15 +31,16 @@ category = Dialog(
     ),
 )
 
+
 subcategory = Dialog(
     Window(
         Format(
             "Выберите категорию птицы"
         ),
         Row(
-            Start(Const('Яичные'), id='egg', state=states.Scrolls.STUB),
-            Start(Const('Мясо-яичные'), id='meat_egg', state=states.Chicken.meat_egg),
-            Start(Const('Мясные'), id='meat', state=states.Chicken.meat),
+            Start(Const('Яичные'), id='egg', state=states.ChickenEgg.STUB),
+            Start(Const('Мясо-яичные'), id='meat_egg', state=states.ChickenMeatEgg.STUB),
+            Start(Const('Мясные'), id='meat', state=states.ChickenMeat.STUB),
         ),
         Start(Const("Назад"), id="restart", state=states.Category.category),
         state=states.SubCategory.chicken
@@ -71,9 +50,9 @@ subcategory = Dialog(
             "Выберите "
         ),
         Row(
-            Start(Const('Яичные'), id='egg', state=states.Ducks.egg),
-            Start(Const('Мясо-яичные'), id='meat_egg', state=states.Ducks.meat_egg),
-            Start(Const('Мясные'), id='meat', state=states.Ducks.meat),
+            Start(Const('Яичные'), id='egg', state=states.DuckEgg.STUB),
+            Start(Const('Мясо-яичные'), id='meat_egg', state=states.DuckMeatEgg.STUB),
+            Start(Const('Мясные'), id='meat', state=states.DuckMeat.STUB),
         ),
         Start(Const("Назад"), id="restart", state=states.Category.category),
         state=states.SubCategory.ducks
@@ -83,37 +62,63 @@ subcategory = Dialog(
             "Выберите "
         ),
         Row(
-            Start(Const('Яичные'), id='egg', state=states.Gooses.egg),
-            Start(Const('Мясо-яичные'), id='meat_egg', state=states.Gooses.meat_egg),
-            Start(Const('Мясные'), id='meat', state=states.Gooses.meat),
+            Start(Const('Яичные'), id='egg', state=states.GoosesEgg.STUB),
+            Start(Const('Мясо-яичные'), id='meat_egg', state=states.GoosesMeatEgg.STUB),
+            Start(Const('Мясные'), id='meat', state=states.GoosesMeat.STUB),
         ),
         Start(Const("Назад"), id="restart", state=states.Category.category),
         state=states.SubCategory.gooses
         ),
 )
 
-stub_scroll_window = Window(
-    Format("{current_page}"),
-    StubScroll(id=ID_STUB_SCROLL, pages="pages"),
-    StaticMedia(path=Format("media/chicken/{media_page}.jpg")),
-    NumberedPager(
-        scroll=ID_STUB_SCROLL,
-    ),
-    SCROLLS_MAIN_MENU_BUTTON,
-    state=states.Scrolls.STUB,
-    getter=paging_getter,
-    preview_data=paging_getter,
+chicken_egg = Dialog(
+    stub_scroll_window_for_egg_chicken
 )
 
-chicken = Dialog(
-    stub_scroll_window
+chicken_egg_meat = Dialog(
+    stub_scroll_window_for_egg_meat_chicken
 )
 
+chicken_meat = Dialog(
+    stub_scroll_window_for_meat_chicken
+)
+
+duck_egg = Dialog(
+    stub_scroll_window_for_egg_duck
+)
+
+duck_egg_meat = Dialog(
+    stub_scroll_window_for_egg_meat_duck
+)
+
+duck_meat = Dialog(
+    stub_scroll_window_for_meat_duck
+)
+
+goose_egg = Dialog(
+    stub_scroll_window_for_egg_goose
+)
+
+goose_egg_meat = Dialog(
+    stub_scroll_window_for_egg_meat_goose
+)
+
+goose_meat = Dialog(
+    stub_scroll_window_for_meat_goose
+)
 
 router = Router()
+router.include_routers(category,
+                       subcategory,
+                       chicken_egg,
+                       chicken_egg_meat,
+                       chicken_meat,
+                       duck_egg,
+                       duck_meat,
+                       duck_egg_meat)
 
 
 @router.message(Command('begin'))
 async def start(message: Message, dialog_manager: DialogManager):
-    await dialog_manager.start(states.Category.category)
+    await dialog_manager.start(states.Category.category, mode=StartMode.NEW_STACK, show_mode=ShowMode.DELETE_AND_SEND)
 
